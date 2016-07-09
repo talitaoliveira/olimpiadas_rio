@@ -26,6 +26,9 @@ function inserirMensagem($arrayMensagem = array()){
 		$nomeimg = "";
 		if($_FILES['strImagem']['name'] != ""){
 			$nomeimg = uploadImagem($_FILES);
+			if($nomeimg == null){
+				exit;
+			}
 		}
 
 
@@ -60,9 +63,9 @@ function uploadImagem($arrayImg = array()){
 		$tamanho = $img['size'];
 
 		/* validção do formato do aquivo */
-		if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp|jpg)$/', $tipoimg)){
-		    throw new Exception('Isso não é uma imagem válida');
-		    exit;
+		if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp|jpg|JPG)$/', $tipoimg)){
+		    throw new Exception("Não é uma imagem válida<br><a href='../index.php'>voltar</a>");
+		    return false;
 		}
 
 		list($image,$tipo) = explode('/', $tipoimg);

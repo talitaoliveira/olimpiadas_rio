@@ -2,6 +2,7 @@
 	require_once (__DIR__ . '/classes/InserirMensagem.php');
 	require_once (__DIR__ . '/classes/MensagemCrud.php');
 	require_once (__DIR__ . '/classes/Util.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -56,13 +57,12 @@
 				<div class="form-group">
 					<label for="strImagem">Imagem</label>
 					<input type="file" id="strImagem" name="strImagem">
-					<p class="help-block">Example block-level help text here.</p>
 				</div>
 					<div class="checkbox">
 					<label for="strMensagem">Mensagem</label>
 					<textarea class="form-control" name="strMensagem" rows="3"></textarea>
 				</div>
-				<button type="submit" class="btn btn-default" name="inserir_mensagem">Submit</button>
+				<button type="submit" class="btn btn-default" name="inserir_mensagem">Enviar</button>
 			</form>
 		</section>
 		<section id="creditos">
