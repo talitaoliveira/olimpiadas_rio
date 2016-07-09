@@ -1,5 +1,5 @@
 # Projeto olimpiadas_rio
-Projeto de armazenamento de mensagens
+Projeto de armazenamento de mensagens, e visualização as mensagens já inseridas
 
 ## Instalação:
 
