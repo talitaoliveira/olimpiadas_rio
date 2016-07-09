@@ -10,6 +10,7 @@ $arrObjMensagens = $mensagem->findAll();
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+	<meta charset="utf-8">
 	<title>Olimpíadas Rio 2016</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
