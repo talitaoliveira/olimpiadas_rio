@@ -1,9 +1,7 @@
 <?php
-
-require_once (__DIR__ . '/classes/InserirMensagem.php');
-require_once (__DIR__ . '/classes/MensagemCrud.php');
-require_once (__DIR__ . '/classes/Util.php');
-
+	require_once (__DIR__ . '/classes/InserirMensagem.php');
+	require_once (__DIR__ . '/classes/MensagemCrud.php');
+	require_once (__DIR__ . '/classes/Util.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -33,12 +31,12 @@ require_once (__DIR__ . '/classes/Util.php');
 				if(!empty($arrObjMensagens)){
 					foreach ($arrObjMensagens as $objMensagem) { ?>
 					<blockquote>
-						<p><?php echo "Nome: " . $objMensagem->getNome() ?></p>
+						<p><?php echo "<strong>Nome:</strong> " . $objMensagem->getNome() ?></p>
 						<?php if($objMensagem->getImagem() != ""){?>
 							<img src="img_mensagem/<?php echo $objMensagem->getImagem()?>" alt="" class="img-thumbnail">
 						<?php }?>
 						<p id="texto-mensagem"><?php echo ($objMensagem->getMensagem() != "") ? '<br>"'.$objMensagem->getMensagem() . '"' : ""; ?></p>
-						<footer><?php echo "Remetente: " . $objMensagem->getRemetente() . " [".Util::invereterData($objMensagem->getData())."]";?></footer>
+						<footer><?php echo "<strong>Remetente:</strong> " . $objMensagem->getRemetente() . " [".Util::invereterData($objMensagem->getData())."]";?></footer>
 					</blockquote>
 				<?php }
 			}else{?>
@@ -71,6 +69,7 @@ require_once (__DIR__ . '/classes/Util.php');
 			<address>
 			  <strong>Copyright &copy; 2016 Talita Oliveira. All rights reserved.</strong><br>
 			  <a href="mailto:litaa.oliveira@gmail.com">litaa.oliveira@gmail.com</a><br>
+			  Site <small>(em construção)</small>: <a href="http://talitaoliveira.com.br/">talitaoliveira.com.br/</a><br>
 			  <abbr title="Phone">Celular:</abbr> (81) 99955-7316
 			</address>
 		</section>

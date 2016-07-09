@@ -36,3 +36,6 @@ address,span.span-center{
 	display: block;
 	text-align: center;
 }
+address{
+	margin-top: 100px;
+}

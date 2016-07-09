@@ -1,20 +1,5 @@
 $(document).ready(function(){
 
-	/*$('#formNovaMensagem').submit(function(){
-		var dados = $('#formNovaMensagem').serialize();
-
-		$.post(
-			"classes/InserirMensagem.php",
-			{data: dados},
-			function( data )
-			{
-				alert( data );
-			}
-		);
-
-		return false;
-	});*/
-
 	$("#nova-mensagem").css("display","none");
 	$("#creditos").css("display","none");
 
