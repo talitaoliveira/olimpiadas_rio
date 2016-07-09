@@ -28,7 +28,8 @@ function inserirMensagem($arrayMensagem = array()){
 			$nomeimg = uploadImagem($_FILES);
 		}
 
-		if($_FILES['strImagem']['name'] != "" && $_POST['strMensagem'] == ""){
+
+		if($_FILES['strImagem']['name'] == "" && $_POST['strMensagem'] == ""){
 			throw new Exception("Coloque ao menos um tipo de mensagem: imagem ou texto<br><a href='../index.php'>voltar</a>");
 		}
 
