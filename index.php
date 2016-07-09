@@ -1,10 +1,8 @@
 <?php
 
+require_once (__DIR__ . '/classes/InserirMensagem.php');
 require_once (__DIR__ . '/classes/MensagemCrud.php');
 require_once (__DIR__ . '/classes/Util.php');
-
-$mensagem = new MensagemCrud();
-$arrObjMensagens = $mensagem->findAll();
 
 ?>
 <!DOCTYPE html>
@@ -13,42 +11,38 @@ $arrObjMensagens = $mensagem->findAll();
 	<meta charset="utf-8">
 	<title>Olimpíadas Rio 2016</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-	<style type="text/css">
-		img{
-			width: 300px;
-			text-align: center;
-		}
-	</style>
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center">
+		<h1 class="text-center menu-home" >
 			Olimpíadas Rio 2016
 		</h1>
 		<br>
 		<ol class="breadcrumb">
-		  <li class="active"><a href="#mensagens" id="menu-home">Home</a></li>
-		  <li><a href="#nova-mensagem" id="menu-nova-mensagem">Nova Mensagem</a></li>
-		  <li><a href="#" id="menu-creditos">Créditos</a></li>
+		  <li class="active"><a href="#" class="menu-home">Home</a></li>
+		  <li><a href="#" class="menu-nova-mensagem">Nova Mensagem</a></li>
+		  <li><a href="#" class="menu-creditos">Créditos</a></li>
 		</ol>
 		<section id="mensagens" style="height:500px">
 			<h2>Mensagens</h2>
+			<br>
 			<?php
 				if(!empty($arrObjMensagens)){
 					foreach ($arrObjMensagens as $objMensagem) { ?>
 					<blockquote>
 						<p><?php echo "Nome: " . $objMensagem->getNome() ?></p>
 						<?php if($objMensagem->getImagem() != ""){?>
-							<img src="imagens/<?php echo $objMensagem->getImagem()?>" alt="" class="img-thumbnail">
+							<img src="img_mensagem/<?php echo $objMensagem->getImagem()?>" alt="" class="img-thumbnail">
 						<?php }?>
-						<p><?php echo $objMensagem->getMensagem()?></p>
-						<footer><?php echo $objMensagem->getRemetente() . " [".Util::invereterData($objMensagem->getData())."]";?></footer>
+						<p id="texto-mensagem"><?php echo ($objMensagem->getMensagem() != "") ? '<br>"'.$objMensagem->getMensagem() . '"' : ""; ?></p>
+						<footer><?php echo "Remetente: " . $objMensagem->getRemetente() . " [".Util::invereterData($objMensagem->getData())."]";?></footer>
 					</blockquote>
 				<?php }
 			}else{?>
-				<span>Nenhuma mensagem cadastrada.</span>
+				<span class="span-center">Nenhuma mensagem cadastrada.</span>
 			<?php } ?>
 		</section>
 		<section id="nova-mensagem">
@@ -75,9 +69,9 @@ $arrObjMensagens = $mensagem->findAll();
 		</section>
 		<section id="creditos">
 			<address>
-			  <strong>Talita Oliveira.</strong><br>
-			  litaa.oliveira@gmail.com<br>
-			  <abbr title="Phone">P:</abbr> (81) 99955-7316
+			  <strong>Copyright &copy; 2016 Talita Oliveira. All rights reserved.</strong><br>
+			  <a href="mailto:litaa.oliveira@gmail.com">litaa.oliveira@gmail.com</a><br>
+			  <abbr title="Phone">Celular:</abbr> (81) 99955-7316
 			</address>
 		</section>
 	</div>

@@ -1,13 +1,17 @@
 <?php
 
-//require_once (__DIR__ . '/Mensagem.php');
 require_once (__DIR__ . '/MensagemCrud.php');
+
+/* DEFININDO VARIÁVEL $arrObjMensagens PARA SER ACESSADA NA VIEW */
+$arrObjMensagens = array();
+$mensagem = new MensagemCrud();
+$arrObjMensagens = $mensagem->findAll();
 
 if(isset($_POST['inserir_mensagem'])){
 	inserirMensagem($_POST);
 }
 
-function inserirMensagem($arrayMensagem){
+function inserirMensagem($arrayMensagem = array()){
 
 	try{
 
@@ -42,7 +46,7 @@ function inserirMensagem($arrayMensagem){
 	}
 }
 
-function uploadImagem($arrayImg){
+function uploadImagem($arrayImg = array()){
 	try{
 
 		$img     = $arrayImg['strImagem'];
@@ -50,22 +54,20 @@ function uploadImagem($arrayImg){
 		$tipoimg    = $img['type'];
 		$tamanho = $img['size'];
 
-		// Validações básicas
-		// Formato
-		if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp)$/', $tipoimg)){
+		/* validção do formato do aquivo */
+		if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp|jpg)$/', $tipoimg)){
 		    throw new Exception('Isso não é uma imagem válida');
 		    exit;
 		}
 
 		list($image,$tipo) = explode('/', $tipoimg);
 
+		$novo_nome_imagem = date("Y.m.d-H.i.s") . ".".$tipo;
+		$pasta_imagens = '../img_mensagem/';
 
-		$new_name = date("Y.m.d-H.i.s") . ".".$tipo;
-		$dir = '../imagens/'; //Diretório para uploads
+  		move_uploaded_file($img['tmp_name'], $pasta_imagens.$novo_nome_imagem);
 
-  		move_uploaded_file($img['tmp_name'], $dir.$new_name);
-
-		return $new_name;
+		return $novo_nome_imagem;
 
 	}catch(Exception $e){
 		echo $e->getMessage();

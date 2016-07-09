@@ -50,7 +50,7 @@ class MensagemCrud extends DB{
 
 	public function findAll(){
 		try{
-			$sql = "SELECT * FROM {$this->table}";
+			$sql = "SELECT * FROM {$this->table} ORDER BY id DESC";
 			$stmt = $this->conn->prepare($sql);
 			$stmt->execute();
 
@@ -65,19 +65,6 @@ class MensagemCrud extends DB{
 			echo $e->getMessage();
 		}
 	}
-
-	public function find($id){
-		try{
-			$sql = "SELECT * FROM {$this->table} WHERE id = :id";
-			$stmt = $this->conn->prepare($sql);
-			$stmt->bindValue(":id",$id);
-			$stmt->execute();
-			return $stmt->fetch();
-		}catch(Exception $e){
-			echo $e->getMessage();
-		}
-	}
-
 }
 
 ?>

@@ -3,7 +3,7 @@ Projeto de armazenamento de mensagens
 
 ## Instalação:
 
-#### Banco de dados mysql utilizar phpmyadmin
+#### Banco de dados mysql (para criação foi utilizado o phpmyadmin)
 1. Criar o banco de dados olimpiadas_rio com Agrupamento (Collation) : utf8_bin
 2. Importar banco de dados que se encontra na raiz do projeto com o nome "olimpiadas_rio.sql"
 

@@ -1,0 +1,38 @@
+@charset "utf-8";
+/*
+	Project name: Olimpiadas Rio 2016 - JC;
+	Author......: Talita Oliveira;
+	Version.....: 1.0 | jul 2016;
+*/
+
+img{
+	width: 300px;
+	text-align: center;
+}
+h1{
+	width: 200px;
+	height: 200px;
+	background-image: url(../img_site/img_olimpiadas_rio_2016.png);
+	background-size: 200px;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	text-indent: -999999px;
+	cursor: pointer;
+}
+h2{
+	text-align: center;
+}
+
+blockquote{
+	background: #F5F5F5;
+	border-radius: 10px;
+}
+p#texto-mensagem{
+	text-transform: capitalize;
+	font-style: oblique;
+}
+
+address,span.span-center{
+	display: block;
+	text-align: center;
+}
