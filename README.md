@@ -11,6 +11,7 @@ Instalação:
 1. Entrar na pasta classes que se encontra na raiz do projeto
 2. Abrir o arquivo config.php
 3. Alterar os segundos parametros das constantes :
+
 **DB_HOST** - nome do servidor (se for local provavelmente é localhost)
 **DB_NAME** - nome do banco de dados (criado anteriormente: olimpiadas_rio)
 **DB_USER** - usuário do servidor
