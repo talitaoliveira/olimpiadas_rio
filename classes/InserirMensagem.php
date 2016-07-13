@@ -13,7 +13,6 @@ try{
 	exit;
 }
 
-
 if(isset($_POST['inserir_mensagem'])){
 	inserirMensagem($_POST);
 }
@@ -66,7 +65,7 @@ function uploadImagem($arrayImg = array()){
 
 		$img     = $arrayImg['strImagem'];
 		$nome    = $img['name'];
-		$tipoimg    = $img['type'];
+		$tipoimg = $img['type'];
 		$tamanho = $img['size'];
 
 		/* validção do formato do aquivo */
@@ -77,7 +76,9 @@ function uploadImagem($arrayImg = array()){
 
 		list($image,$tipo) = explode('/', $tipoimg);
 
-		$novo_nome_imagem = date("Y.m.d-H.i.s") . ".".$tipo;
+		/* criando hash do nome da imagem */
+		$novo_nome_imagem = md5($nome.date("Y.m.d-H.i.s")) . ".".$tipo;
+
 		$pasta_imagens = '../img_mensagem/';
 
   		move_uploaded_file($img['tmp_name'], $pasta_imagens.$novo_nome_imagem);
