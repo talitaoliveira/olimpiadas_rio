@@ -27,8 +27,8 @@ class MensagemCrud extends DB{
 	}
 
 	public function insert(Mensagem $objMensagem){
-
-		$sql = "INSERT INTO {$this->table} (nome,
+		try{
+			$sql = "INSERT INTO {$this->table} (nome,
 											remetente,
 											mensagem,
 											imagem,
@@ -38,14 +38,20 @@ class MensagemCrud extends DB{
 											:mensagem,
 											:imagem,
 											:data)";
-		$stmt = $this->conn->prepare($sql);
-		$stmt->bindValue(":nome",$objMensagem->getNome());
-		$stmt->bindValue(":remetente",$objMensagem->getRemetente());
-		$stmt->bindValue(":mensagem",$objMensagem->getMensagem());
-		$stmt->bindValue(":imagem", ($objMensagem->getImagem() != null) ? $objMensagem->getImagem() : "" );
-		$stmt->bindValue(":data", $objMensagem->getData());
 
-		return $stmt->execute();
+			$stmt = $this->conn->prepare($sql);
+			$stmt->bindValue(":nome",$objMensagem->getNome());
+			$stmt->bindValue(":remetente",$objMensagem->getRemetente());
+			$stmt->bindValue(":mensagem",$objMensagem->getMensagem());
+			$stmt->bindValue(":imagem", ($objMensagem->getImagem() != null) ? $objMensagem->getImagem() : "" );
+			$stmt->bindValue(":data", $objMensagem->getData());
+
+			return $stmt->execute();
+
+		}catch(PDOException $e){
+			throw new PDOException("ERRO INSERIR: " . $e->getMessage());
+		}
+
 	}
 
 	public function findAll(){
@@ -61,8 +67,8 @@ class MensagemCrud extends DB{
 			}
 
 			return $arrayRegistros;
-		}catch(Exception $e){
-			echo $e->getMessage();
+		}catch(PDOException $e){
+			throw new PDOException("ERRO BUSCAR: " . $e->getMessage());
 		}
 	}
 }

@@ -3,9 +3,16 @@
 require_once (__DIR__ . '/MensagemCrud.php');
 
 /* DEFININDO VARIÁVEL $arrObjMensagens PARA SER ACESSADA NA VIEW */
-$arrObjMensagens = array();
-$mensagem = new MensagemCrud();
-$arrObjMensagens = $mensagem->findAll();
+
+try{
+	$arrObjMensagens = array();
+	$mensagem = new MensagemCrud();
+	$arrObjMensagens = $mensagem->findAll();
+}catch(Exception $e){
+	echo $e->getMessage();
+	exit;
+}
+
 
 if(isset($_POST['inserir_mensagem'])){
 	inserirMensagem($_POST);
