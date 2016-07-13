@@ -39,14 +39,14 @@ function inserirMensagem($arrayMensagem = array()){
 		}
 
 
-		if($_FILES['strImagem']['name'] == "" && $_POST['strMensagem'] == ""){
+		if($_FILES['strImagem']['name'] == "" && $arrayMensagem['strMensagem'] == ""){
 			throw new Exception("Coloque ao menos um tipo de mensagem: imagem ou texto<br><a href='../index.php'>voltar</a>");
 		}
 
 		$mensagem = new Mensagem(null,
-								 $_POST['strNome'],
-								 $_POST['strRemetente'],
-								 $_POST['strMensagem'],
+								 $arrayMensagem['strNome'],
+								 $arrayMensagem['strRemetente'],
+								 $arrayMensagem['strMensagem'],
 								 $nomeimg,
 								 date('Y-m-d'));
 
