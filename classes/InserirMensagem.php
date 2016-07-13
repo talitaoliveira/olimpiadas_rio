@@ -5,9 +5,7 @@ require_once (__DIR__ . '/MensagemCrud.php');
 /* DEFININDO VARIÁVEL $arrObjMensagens PARA SER ACESSADA NA VIEW */
 
 try{
-	$arrObjMensagens = array();
-	$mensagem = new MensagemCrud();
-	$arrObjMensagens = $mensagem->findAll();
+	$arrObjMensagens = MensagemCrud::getInstance()->findAll();
 }catch(Exception $e){
 	echo $e->getMessage();
 	exit;
@@ -37,7 +35,6 @@ function inserirMensagem($arrayMensagem = array()){
 			}
 		}
 
-
 		if($_FILES['strImagem']['name'] == "" && $arrayMensagem['strMensagem'] == ""){
 			throw new Exception("Coloque ao menos um tipo de mensagem: imagem ou texto<br><a href='../index.php'>voltar</a>");
 		}
@@ -49,8 +46,7 @@ function inserirMensagem($arrayMensagem = array()){
 								 $nomeimg,
 								 date('Y-m-d'));
 
-		$insere = new MensagemCrud();
-		$insere->insert($mensagem);
+		MensagemCrud::getInstance()->insert($mensagem);
 
 		echo "Inserido com sucesso!<br><a href='../index.php'>voltar</a>";
 
