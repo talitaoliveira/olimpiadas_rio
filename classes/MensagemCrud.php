@@ -6,11 +6,19 @@ require_once (__DIR__ . '/DB.php');
 class MensagemCrud extends DB{
 
 	protected $table = "mensagens";
+	private static $instance;
 
 	private $conn;
 
 	public function __construct(){
 		$this->conn = DB::getInstance();
+	}
+
+	public static function getInstance(){
+		if(!isset(self::$instance)){
+			self::$instance = new MensagemCrud();
+		}
+		return self::$instance;
 	}
 
 	private function criarObjeto($registro){
