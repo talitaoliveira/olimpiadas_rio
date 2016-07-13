@@ -11,7 +11,7 @@ class Util{
 
 			list($ano,$mes,$dia) = explode('-', $data);
 
-			$data_formatada = $dia."/".$mes."".$ano;
+			$data_formatada = $dia."/".$mes."/".$ano;
 
 			return $data_formatada;
 
